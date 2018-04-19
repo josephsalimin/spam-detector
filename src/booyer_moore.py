@@ -55,7 +55,7 @@ class BooyerMoore:
 	def match_string(cls, string, pat):
 		result =  {
 			"string" : string, 
-			"is_match" : cls.is_pattern_in_string(string, pat)
+			"is_match" : cls.is_pattern_in_string(string.lower(), pat)
 		}
 		return result
 

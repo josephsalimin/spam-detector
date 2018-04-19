@@ -9,35 +9,27 @@ class TweepyAPI(tweepy.StreamListener):
 	access_token = ""
 	access_token_secret = ""
 
-	# For stream listener
-
-	def __init__(self):
+	def __init__(self, spam_text):
 		self.api = 0
 		self.list_texts = []
 		self.count = 0
+		self.spam_text = spam_text
 
 	def on_status(self, status):
-		print(status.text)
-
-		get_text = status.text.lower()
-		res = BooyerMoore.match_string(get_text, 'coin')
+		get_text = status.text
+		res = BooyerMoore.match_string(get_text, self.spam_text)
 		self.list_texts.append(res)
 		self.count += 1
 
 		if (self.count > 5):
-			for txt in self.list_texts :
-				print(txt["string"])
-				print(txt["is_match"])
-			self.list_texts = []
-			self.count = 0
+			# Disconnect
 			return False
-
 		return True
 		
 
 	def on_error(self, status_code):
 		if status_code == 420:
-			#returning False in on_data disconnects the stream
+			# Returning False in on_data disconnects the stream
 			return False
 	
 
@@ -54,7 +46,7 @@ class TweepyAPI(tweepy.StreamListener):
 			cls.access_token_secret = contents[3]
 
 	@classmethod
-	def main_class(cls):
+	def main_class(cls, spam_text):
 		# Get the access key and token
 		cls.read_file("key.txt")
 		# Authentication
@@ -65,11 +57,13 @@ class TweepyAPI(tweepy.StreamListener):
 		api = tweepy.API(auth)
 
 		# Create listener
-		listener = cls()
+		listener = cls(spam_text)
 		stream = tweepy.Stream(auth = api.auth, listener = listener)
-		stream.filter(track=['samantha'], languages = ["en"], stall_warnings = True)
+		stream.filter(track=['bitcoin', 'ethereum', 'stellar'], languages = ["en"], stall_warnings = True)
+
+		return listener.list_texts
 		
 
 		
 # Testing
-TweepyAPI.main_class()
+# TweepyAPI.main_class()
