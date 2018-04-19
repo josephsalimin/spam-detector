@@ -10,28 +10,36 @@ class TweepyAPI(tweepy.StreamListener):
 	access_token_secret = ""
 
 	# For stream listener
-	count = 0
-	list_texts = []
+
+	def __init__(self):
+		self.api = 0
+		self.list_texts = []
+		self.count = 0
 
 	def on_status(self, status):
-		
-		get_text = status.text.lower()
-		res = BooyerMoore.match_string(get_text, 'bitcoin')
-		TweepyAPI.list_texts.append(res)
-		TweepyAPI.count += 1
+		print(status.text)
 
-		if (TweepyAPI.count > 5):
-			for txt in TweepyAPI.list_texts :
+		get_text = status.text.lower()
+		res = BooyerMoore.match_string(get_text, 'coin')
+		self.list_texts.append(res)
+		self.count += 1
+
+		if (self.count > 5):
+			for txt in self.list_texts :
 				print(txt["string"])
 				print(txt["is_match"])
-			TweepyAPI.list_texts = []
-			TweepyAPI.count = 0
+			self.list_texts = []
+			self.count = 0
+			return False
+
+		return True
 		
 
 	def on_error(self, status_code):
 		if status_code == 420:
 			#returning False in on_data disconnects the stream
 			return False
+	
 
 	@classmethod
 	def read_file(cls, file):
@@ -52,8 +60,6 @@ class TweepyAPI(tweepy.StreamListener):
 		# Authentication
 		auth = tweepy.OAuthHandler(cls.consumer_key, cls.consumer_secret)
 		auth.set_access_token(cls.access_token, cls.access_token_secret)
-		# print(cls.consumer_key, cls.consumer_secret)
-		# print(cls.access_token, cls.access_token_secret)
 
 		# Get API
 		api = tweepy.API(auth)
@@ -61,7 +67,7 @@ class TweepyAPI(tweepy.StreamListener):
 		# Create listener
 		listener = cls()
 		stream = tweepy.Stream(auth = api.auth, listener = listener)
-		stream.filter(track=['bitcoin'], languages = ["en"], stall_warnings = True)
+		stream.filter(track=['samantha'], languages = ["en"], stall_warnings = True)
 		
 
 		
