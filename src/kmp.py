@@ -3,7 +3,8 @@
 # Algorithm of KMP
 class KMP:
 
-	def generate_border(self, pat):
+	@classmethod
+	def generate_border(cls, pat):
 		# Total length for the lps
 		length = len(pat) - 1
 		# The length of the last prefix and suffix
@@ -27,11 +28,12 @@ class KMP:
 		# Return the result
 		return lps
 
-	def is_pattern_in_string(self, text, pat):
-		txt_len = len(text) 	# menyimpan panjang text
-		path_len = len(pat)	# menyimpan panjang pattern
+	@classmethod
+	def is_pattern_in_string(cls, text, pat):
+		txt_len = len(text) 	# Save length of text
+		path_len = len(pat)	# Save length of pattern
 		i, j = 0, 0				# iterator text and pattern
-		lps = self.generateBorder(pat);
+		lps = cls.generateBorder(pat);
 		match = False
 		while(i < txt_len and not(match)):
 			if(text[i] == pat[j]):
@@ -52,11 +54,11 @@ class KMP:
 					j = lps[j-1]
 		return match
 
-	def match_strings(self, input_text, pattern):
-		result = [] 			# penyimpan hasil
-		for text in input_text:
-			# kalau pattern terdapat pada text
-			if(self.is_pattern_in_string(text, pattern)):
-				# append text ke result
-				result.append(text)
+	@classmethod
+	def match_string(cls, input_text, pattern):
+		# The result
+		result =  {
+			"string" : input_text, 
+			"is_match" : cls.is_pattern_in_string(input_text.lower(), pattern)
+		}
 		return result

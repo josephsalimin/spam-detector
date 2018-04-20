@@ -1,1 +1,1 @@
-__all__ = ['get_tweepy', 'booyer_moore', 'kmp']
+__all__ = ['filter_algorithm', 'booyer_moore', 'kmp']

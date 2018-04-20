@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, session, redirect, url_for
-from get_tweepy import TweepyAPI
-
+from filter_algorithm import FilterMethod
+import json
 
 
 app = Flask(__name__)
@@ -9,17 +9,23 @@ app.config['DEBUG'] = True
 
 @app.route('/tweepy', methods=['POST', 'GET'])
 def request_tweepy():
-	if request.method == 'POST':
-		# Get session
-		session['spam_text'] = request.values.get('spam_text')
+	# Test
+	print("I'm in!")
 
-	try:
-		result = TweepyAPI.main_class(session['spam_text'])
-	except KeyError:
-		error = {
-			'Result': 'Error Not Found'
-		}
+	if (request.method == 'POST'):
+		datas = request.data
+	else:
+		error = {'Result': 'Error Not Found'}
 		return jsonify(error)
+
+	json_data = json.loads(datas)
+
+	filtered_msg = FilterMethod.do_filter(json_data)
+	result =  {
+		'response':filtered_msg,
+		'status': 500
+	}
+	return jsonify(result)
 
 
 @app.route('/')
