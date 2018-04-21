@@ -72,7 +72,6 @@ function get_filter_spam($texts, $spam_text, $filter_method) {
 	#echo json_encode($result);
 }
 
-
 # Get the data
 $spam_text = isset($_GET['spam_text']) ? $_GET['spam_text'] : '';
 $search_text = isset($_GET['search_text']) ? $_GET['search_text'] : '';
@@ -80,13 +79,8 @@ $filter_method = isset($_GET['filter_method']) ? $_GET['filter_method'] : '';
 
 # Setting the key
 $keys = read_file("key.txt");
-# Set the url
+# Set the url and settings
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
-
-// foreach ($keys as $key => $value) {
-// 	echo '<div>' . $value . '</div>';
-// }
-
 $settings = array (
 	'consumer_key' => (string) $keys[0],
 	'consumer_secret' => (string) $keys[1],
