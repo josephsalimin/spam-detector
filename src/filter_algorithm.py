@@ -1,14 +1,9 @@
 from booyer_moore import BooyerMoore
 from kmp import KMP
+from regex import Regex
 
 
 class FilterMethod:
-
-	dict_function = {
-		'KMP': 'FilterMethod.do_kmp',
-		'Booyer-Moore': 'FilterMethod.do_booyer',
-		'Regex': 'FilterMethod.do_regex'
-	}
 
 	@staticmethod
 	def do_kmp(spam_text, data_resp):
@@ -18,6 +13,8 @@ class FilterMethod:
 			text = data['text']
 			result = KMP.match_string(text, spam_text)
 			result['profile_img'] = data['profile_img']
+			result['name'] = data['name']
+			result['screen_name'] = data['screen_name']
 			results.append(result)
 
 		return results
@@ -30,13 +27,25 @@ class FilterMethod:
 			text = data['text']
 			result = BooyerMoore.match_string(text, spam_text)
 			result['profile_img'] = data['profile_img']
+			result['name'] = data['name']
+			result['screen_name'] = data['screen_name']
 			results.append(result)
 
 		return results
 
 	@staticmethod
 	def do_regex(spam_text, data_resp):
-		return None
+		results = []
+
+		for data in data_resp:
+			text = data['text']
+			result = Regex.match_string(text, spam_text)
+			result['profile_img'] = data['profile_img']
+			result['name'] = data['name']
+			result['screen_name'] = data['screen_name']
+			results.append(result)
+
+		return results
 
 
 	@classmethod

@@ -35,13 +35,17 @@ function get_tweets($url, $settings, $search_text) {
     	# code...
     	$res[] = array(
     		'text' => $value['text'],
-    		'profile_img' => $value['user']['profile_image_url']
+    		'profile_img' => $value['user']['profile_image_url'],
+    		'name' => $value['user']['name'],
+    		'screen_name' => $value['user']['screen_name']
     	);
     }
 
     $res = array(
     	'response' => $res
     );
+
+    // print_r($res);
 
     return $res;
 }
@@ -64,7 +68,6 @@ function get_filter_spam($texts, $spam_text, $filter_method) {
 	$result = curl_exec($ch);
 	$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-	echo $result;
 	return $result;
 	#echo json_encode($result);
 }
@@ -98,5 +101,5 @@ $res['spam_text'] = $spam_text;
 
 $final_results = get_filter_spam($res, $spam_text, $filter_method);
 
-echo json_encode($final_results);
+echo ($final_results);
 ?>
