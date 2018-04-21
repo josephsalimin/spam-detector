@@ -10,6 +10,7 @@ class KMP:
 		# The length of the last prefix and suffix
 		length_sp = 0 
 		# Set first index to 0
+		lps = []
 		lps.append(0)
 		# Loops until < length
 		for i in range(1, length):
@@ -31,9 +32,10 @@ class KMP:
 	@classmethod
 	def is_pattern_in_string(cls, text, pat):
 		txt_len = len(text) 	# Save length of text
-		path_len = len(pat)	# Save length of pattern
+		path_len = len(pat)		# Save length of pattern
 		i, j = 0, 0				# iterator text and pattern
-		lps = cls.generateBorder(pat);
+		lps = []
+		lps = cls.generate_border(pat);
 		match = False
 		while(i < txt_len and not(match)):
 			if(text[i] == pat[j]):

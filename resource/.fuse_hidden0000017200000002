@@ -35,9 +35,7 @@ function get_tweets($url, $settings, $search_text) {
     	# code...
     	$res[] = array(
     		'text' => $value['text'],
-    		'profile_img' => $value['user']['profile_image_url'],
-    		'name' => $value['user']['name'],
-    		'screen_name' => $value['user']['screen_name']
+    		'profile_img' => $value['user']['profile_image_url']
     	);
     }
 
@@ -45,10 +43,8 @@ function get_tweets($url, $settings, $search_text) {
     	'response' => $res
     );
 
-
     # Tambahin ini
     # print_r($res);
-
     return $res;
 }
 
@@ -98,5 +94,5 @@ $res['spam_text'] = $spam_text;
 
 $final_results = get_filter_spam($res, $spam_text, $filter_method);
 
-echo ($final_results);
+echo json_encode($final_results);
 ?>

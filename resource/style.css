@@ -59,12 +59,18 @@ input[type=text]:focus {
     display: flex;
 }
 
-#sidebar {
-    background-color: white;
-    margin-top: 10px;
+.sidebar {
+    height: 100%;
+    padding: 0;
 }
 
-#sidebar #select {
+.sidebar-part {
+    background-color: white;
+    margin-top: 10px;
+    height: 100%;
+}
+
+.sidebar #select {
     background-color: white;
     border: 1px solid #90bcda;
     border-radius: 5px;
@@ -73,7 +79,7 @@ input[type=text]:focus {
     color: #00A9E6;
 }
 
-#sidebar #select option {
+.sidebar #select option {
     padding: 10px;
     color: #00A9E6;
 }
@@ -97,6 +103,7 @@ input[type=text]:focus {
 }
 
 .tweet-single {
+    height: 100%;
     background-color: white;
     border-bottom: 1px solid rgb(218, 218, 218);
     padding: 0;
@@ -105,9 +112,62 @@ input[type=text]:focus {
 }
 
 .tweet-single:hover {
-    background-color: #F5F8FA;
+    background-color: #e6ebef;
 }
 
-.spam-tag, .tweet-content {
+/*.spam-tag, .tweet-section {
     padding: 5px;
+}*/
+
+.spam-tag {
+    font-weight: bold;
+    font-size: 1.3em;
+    width: 100px;
+    text-align: center;
+    top: 50%;
+    padding-left: 15px;
+}
+
+.spam-true {
+    color: #e29104;
+}
+
+.spam-false {
+    color: #1490bc;
+}
+
+.tweet-section {
+    display: flex;
+    padding-right: 15px;
+}
+
+.tweet-image {
+    margin: 5px;
+    padding: 5px;
+}
+
+.tweet-image img {
+    border-radius: 50%;
+}
+
+.tweet-content {
+    font-size: 0.88em;
+    margin-top: 10px;
+}
+
+.tweet-names {
+    display: flex;
+}
+
+.tweet-name {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: auto;
+    margin-right: 10px;
+}
+
+.tweet-uname {
+    font-size: 1em;
+    color: grey;
+    margin-top: auto;
 }
