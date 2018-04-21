@@ -43,6 +43,8 @@ function get_tweets($url, $settings, $search_text) {
     	'response' => $res
     );
 
+    # Tambahin ini
+    # print_r($res);
     return $res;
 }
 
@@ -64,7 +66,7 @@ function get_filter_spam($texts, $spam_text, $filter_method) {
 	$result = curl_exec($ch);
 	$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-	echo $result;
+	# echo $result;
 	return $result;
 	#echo json_encode($result);
 }
