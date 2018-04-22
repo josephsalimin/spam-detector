@@ -17,6 +17,39 @@
     </head>
     <body>
         <div class="container-fluid" id="main">
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div id="about-us">
+                        <div class="col">
+                            <h1>Joseph Salimin</h1>
+                            <p>DRPL + laporan tubes enthusiast</p>
+                            <a href="http://www.josephsalimin.com/">josephsalimin.com</a>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            <h1>I Kadek Yuda BP</h1>
+                            <p>Currently studying Computer Science at Institut Teknologi Bandung. </p>
+                            <a href="https://github.com/KadekYuda">Link Github</a>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            <h1>Ahmad Fahmi P</h1>
+                            <p>Front End + UI/UX enthusiast</p>
+                            <a href="http://www.ahmadfahmi.me/">ahmadfahmi.me</a>
+                        </div>
+                        <!-- <h2 style="font-size: 0.8em">Created by:</h2>
+                        <p style="color: #00A9E6; font-size: 1em; font-weight: bold; margin: 0">Joseph Salimin</p>
+                        <p style="color: grey; font-size: 0.85em">13516037</p>
+                        <p style="color: #00A9E6; font-size: 1em; font-weight: bold; margin: 0">Ahmad Fahmi P</p>
+                        <p style="color: grey; font-size: 0.85em">13516139</p>
+                        <p style="color: #00A9E6; font-size: 1em; font-weight: bold; margin: 0">I Kadek Yuda</p>
+                        <p style="color: grey; font-size: 0.85em">13516115</p> -->
+                    </div>
+                </div>
+            </div>
             <div class="container" id="content">
                 <div class="col-md-3 sidebar" >
                     <div class="box-default sidebar-part">
@@ -40,13 +73,7 @@
                     <div class="box-default sidebar-part">
                         <h1 style="font-size: 1.5em; font-weight: bold">Twitter Spam Detector</h1>
                         <hr>
-                        <h2 style="font-size: 0.8em">Created by:</h2>
-                        <p style="color: #00A9E6; font-size: 1em; font-weight: bold; margin: 0">Joseph Salimin</p>
-                        <p style="color: grey; font-size: 0.85em">13516037</p>
-                        <p style="color: #00A9E6; font-size: 1em; font-weight: bold; margin: 0">Ahmad Fahmi P</p>
-                        <p style="color: grey; font-size: 0.85em">13516139</p>
-                        <p style="color: #00A9E6; font-size: 1em; font-weight: bold; margin: 0">I Kadek Yuda</p>
-                        <p style="color: grey; font-size: 0.85em">13516115</p>
+                        <button class="btn-apply" id="myBtn">About Us</button>
                     </div>
                 </div>
 
