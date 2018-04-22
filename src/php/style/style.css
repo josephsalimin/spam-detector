@@ -219,5 +219,19 @@ input[type=text]:focus {
 
 #about-us {
     display: block;
+    padding: 30px;
+}
 
+#about-us .title {
+    text-align: center;
+}
+
+#about-us .title h1 {
+    font-weight: bold;
+}
+
+.author h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00A9E6;
 }
