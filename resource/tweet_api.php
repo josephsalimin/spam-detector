@@ -18,7 +18,7 @@ function read_file($file) {
 }
 
 function get_tweets($url, $settings, $search_text) {
-	$get_field = '?q=#' . $search_text . "&count=10";
+	$get_field = '?q=#' . $search_text . "&count=10" . "&tweet_mode=extended";
 	$req_method = 'GET';
 
 	$twitter = new TwitterAPIExchange($settings);
@@ -34,7 +34,7 @@ function get_tweets($url, $settings, $search_text) {
     foreach ($array as $key => $value) {
     	# code...
     	$res[] = array(
-    		'text' => $value['text'],
+    		'text' => $value['full_text'],
     		'profile_img' => $value['user']['profile_image_url'],
     		'name' => $value['user']['name'],
     		'screen_name' => $value['user']['screen_name']
