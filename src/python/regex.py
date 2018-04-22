@@ -15,15 +15,19 @@ class Regex:
 		pattern += ".*"
 
 		# Compile pattern into regex pattern
-		print(pattern)
+		# print(pattern)
 		regex_pattern = re.compile(pattern)
 		return regex_pattern
 
 	@classmethod
 	def is_pattern_in_string(cls, text, pat):
 		pattern = cls.generate_pattern(pat)
-		result = pattern.match(text)
-		if result:
+		text_split = text.split("\n")
+		string = ""
+		for item in text_split:
+			string += item
+		result = pattern.match(string)
+		if result != None :
 			return True
 		else:
 			return False
