@@ -12,7 +12,7 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
         <title>Spam Detector</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
     </head>
     <body>
@@ -63,6 +63,6 @@
         </div>
     </body>
 
-    <script src="index.js" type="text/javascript">  </script>
+    <script src="../style/index.js" type="text/javascript">  </script>
 
 </html>

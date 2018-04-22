@@ -1,7 +1,5 @@
 <?php
 # Import
-# phpinfo();
-
 ini_set('display_errors', 1);
 require_once('TwitterAPIExchange.php');
 
@@ -18,7 +16,7 @@ function read_file($file) {
 }
 
 function get_tweets($url, $settings, $search_text) {
-	$get_field = '?q=#' . $search_text . "&count=10";
+	$get_field = '?q=#' . $search_text . "&count=10" . "&tweet_mode=extended";
 	$req_method = 'GET';
 
 	$twitter = new TwitterAPIExchange($settings);
@@ -34,8 +32,10 @@ function get_tweets($url, $settings, $search_text) {
     foreach ($array as $key => $value) {
     	# code...
     	$res[] = array(
-    		'text' => $value['text'],
-    		'profile_img' => $value['user']['profile_image_url']
+    		'text' => $value['full_text'],
+    		'profile_img' => $value['user']['profile_image_url'],
+    		'name' => $value['user']['name'],
+    		'screen_name' => $value['user']['screen_name']
     	);
     }
 
@@ -43,8 +43,6 @@ function get_tweets($url, $settings, $search_text) {
     	'response' => $res
     );
 
-    # Tambahin ini
-    # print_r($res);
     return $res;
 }
 
@@ -66,9 +64,7 @@ function get_filter_spam($texts, $spam_text, $filter_method) {
 	$result = curl_exec($ch);
 	$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-	# echo $result;
 	return $result;
-	#echo json_encode($result);
 }
 
 # Get the data
@@ -94,5 +90,5 @@ $res['spam_text'] = $spam_text;
 
 $final_results = get_filter_spam($res, $spam_text, $filter_method);
 
-echo json_encode($final_results);
+echo ($final_results);
 ?>
