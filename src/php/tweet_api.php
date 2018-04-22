@@ -1,7 +1,5 @@
 <?php
 # Import
-# phpinfo();
-
 ini_set('display_errors', 1);
 require_once('TwitterAPIExchange.php');
 
@@ -45,8 +43,6 @@ function get_tweets($url, $settings, $search_text) {
     	'response' => $res
     );
 
-    // print_r($res);
-
     return $res;
 }
 
@@ -69,7 +65,6 @@ function get_filter_spam($texts, $spam_text, $filter_method) {
 	$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
 	return $result;
-	#echo json_encode($result);
 }
 
 # Get the data

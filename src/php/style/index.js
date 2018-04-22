@@ -24,7 +24,7 @@ function show_tweets(data_received) {
 	var data = JSON.parse(data_received);
 	var response = data["response"];
 
-	$('#tweet-list').empty();
+	//$('#tweet-list').empty();
 
 	for (var i=0; i<response.length; i++) {
 		var tweet = response[i];
@@ -76,7 +76,7 @@ function show_tweets(data_received) {
 		tweet_section.append(tweet_content);
 		tweet_single.append(spam_tag);
 		tweet_single.append(tweet_section);
-		$('#tweet-list').append(tweet_single);
+		$('#tweet-list').prepend(tweet_single);
 	}
 
 }
